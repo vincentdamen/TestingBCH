@@ -14,7 +14,8 @@ public class RestoAdapter extends CursorAdapter {
     }
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.row_layout, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.row_layout, parent,
+                false);
     }
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
@@ -23,7 +24,8 @@ public class RestoAdapter extends CursorAdapter {
         TextView price = view.findViewById(R.id.price);
         item.setText(cursor.getString(cursor.getColumnIndex("name")));
         amount.setText(cursor.getString(cursor.getColumnIndex("amount")));
-        int sum = cursor.getInt(cursor.getColumnIndex("amount")) * cursor.getInt(cursor.getColumnIndex("price"));
+        int sum = cursor.getInt(cursor.getColumnIndex("amount")) *
+                cursor.getInt(cursor.getColumnIndex("price"));
         price.setText("€"+sum);
 
     }

@@ -12,12 +12,14 @@ public class RestoDatabase extends SQLiteOpenHelper {
     private static RestoDatabase instance;
     private static final String DBName = "orders.db";
     private static final int version = 1;
-    private RestoDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    private RestoDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory
+            , int version) {
         super(context, name, factory, version);
     }
     public static RestoDatabase getInstance(Context context){
         if(instance == null){
-            instance = new RestoDatabase(context.getApplicationContext(),DBName,null , version);
+            instance = new RestoDatabase(context.getApplicationContext(),DBName,
+                    null , version);
         }
         return instance;
     }

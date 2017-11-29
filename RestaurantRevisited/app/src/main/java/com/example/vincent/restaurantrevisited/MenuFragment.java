@@ -49,7 +49,8 @@ public class MenuFragment extends ListFragment {
                 try {
                     if (Objects.equals(Items.get(s).getString("name"), text.toString())) {
                         RestoDatabase db = RestoDatabase.getInstance(getContext());
-                        db.insert(Items.get(s).getString("name"), Items.get(s).getInt("price"), 1);
+                        db.insert(Items.get(s).getString("name"),
+                                Items.get(s).getInt("price"), 1);
 
                     }
                 } catch (JSONException e) {
@@ -75,11 +76,15 @@ public class MenuFragment extends ListFragment {
                         ArrayList results = new ArrayList();
                         try {
                             results = new ArrayList<JSONObject>();
-                            JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
+                            JSONObject object =
+                                    (JSONObject) new JSONTokener(response).nextValue();
                             JSONArray subArray = object.getJSONArray("items");
                             for (int i = 0; i < subArray.length(); i++) {
-                                if (Objects.equals(subArray.getJSONObject(i).getString("category"), category)) {
-                                    results.add(subArray.getJSONObject(i).getString("name"));
+                                if (Objects.equals(
+                                        subArray.getJSONObject(i).getString("category")
+                                        , category)) {
+                                    results.add(
+                                        subArray.getJSONObject(i).getString("name"));
                                     Items.add(subArray.getJSONObject(i));
                                 }
                             }
@@ -100,7 +105,8 @@ public class MenuFragment extends ListFragment {
     }
     // Sets a list adapter
     public void setAdapter(ArrayList<String> results){
-        this.setListAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, results ));
+        this.setListAdapter(new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, results ));
     }
 }
 

@@ -45,7 +45,8 @@ public class CategoriesFragment extends ListFragment {
                     public void onResponse(String response) {
                         try {
                             ArrayList<String> results = new ArrayList<String>();
-                            JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
+                            JSONObject object =
+                                    (JSONObject) new JSONTokener(response).nextValue();
                             JSONArray subArray = object.getJSONArray("categories");
                             for (int i = 0; i < subArray.length(); i++) {
                                 results.add( subArray.get(i).toString());
@@ -66,7 +67,8 @@ public class CategoriesFragment extends ListFragment {
     }
     //Makes a list adapter
     public void setAdapter(ArrayList<String> results){
-        this.setListAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, results ));
+        this.setListAdapter(new ArrayAdapter<String>(getContext(),
+                    android.R.layout.simple_list_item_1, results ));
     }
 
     @Override
